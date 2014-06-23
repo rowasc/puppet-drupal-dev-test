@@ -5,7 +5,7 @@
     SetEnv APPLICATION_ENV development
     DirectoryIndex index.php index.html
     #change "yourproject" to the name of your project
-    ErrorLog "|/usr/sbin/rotatelogs -f /var/log/httpd/yourproject.local.errorlog.%Y-%m-%d-%H_%M_%S 84600"
+    ErrorLog "|/usr/sbin/rotatelogs -f /var/log/httpd/yourproject.errorlog.%Y-%m-%d-%H_%M_%S 84600"
     AllowOverride All
     Order allow,deny
     Allow from all
