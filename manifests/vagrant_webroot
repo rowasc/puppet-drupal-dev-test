@@ -2,6 +2,7 @@
   ServerName app.local
   DocumentRoot /vagrant/webroot
   <Directory /vagrant/webroot>
+    SetEnv APPLICATION_ENV development
     DirectoryIndex index.php index.html
     AllowOverride All
     Order allow,deny
