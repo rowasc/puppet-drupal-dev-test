@@ -1,7 +1,7 @@
 # Vagrant/Puppet configuration for LAMP
-
-Forked from [jas0nkim/my-vagrant-puppet-lamp](https://github.com/jas0nkim/my-vagrant-puppet-lamp).
-
+Forked from [PerishableDave/puppet-lamp-stack](https://github.com/PerishableDave/puppet-lamp-stack)
+## Why would I fork this setup? 
+* Mainly because I want to have an easy way to have this setup modified for my needs and easy to access for all my projects. 
 ## Prerequisites
 * [Vagrant](http://www.vagrantup.com/)
 * [Virtual Box](https://www.virtualbox.org/)
