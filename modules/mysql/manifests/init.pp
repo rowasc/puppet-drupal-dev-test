@@ -19,10 +19,27 @@ class mysql {
     command => "mysqladmin -uroot password $database_pwd",
     require => Service["mysql"]
   }
-
+	
   exec { "set-mysql-db":
     command => "echo 'create database if not exists $database'|mysql -uroot -p$database_pwd",
     require => Service["mysql"]
   }
+
+  exec { "set-mysql-dump-tmp":
+    command => "echo -e \"use localdb; $(cat /vagrant/data/localdb.sql)\" > /vagrant/data/tmp.sql;",
+    require => Service["mysql"]
+  }
+
+  exec { "use-mysql-dump-tmp-file":
+    command => "mysql -uroot -p$database_pwd < /vagrant/data/tmp.sql;",
+    require => Service["mysql"]
+  }
+
+  exec { "delete-mysql-dump-tmp-file":
+    command => "rm /vagrant/data/tmp.sql;",
+    require => Service["mysql"]
+  }
+
+
 
 }
