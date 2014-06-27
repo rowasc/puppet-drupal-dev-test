@@ -1,13 +1,26 @@
 <VirtualHost *:80>
-  ServerName app.local
+  ServerName showcase_drupal.local
   DocumentRoot /vagrant/webroot
+  ErrorLog "|/usr/sbin/rotatelogs -f /var/log/httpd/showcase_drupal.errorlog.%Y-%m-%d-%H_%M_%S 84600"
+
   <Directory /vagrant/webroot>
     SetEnv APPLICATION_ENV development
     DirectoryIndex index.php index.html
     #change "yourproject" to the name of your project
-    ErrorLog "|/usr/sbin/rotatelogs -f /var/log/httpd/yourproject.errorlog.%Y-%m-%d-%H_%M_%S 84600"
     AllowOverride All
     Order allow,deny
     Allow from all
   </Directory>
 </VirtualHost>
+
+#<VirtualHost *:80>
+#  ServerName app.local
+#  DocumentRoot /vagrant/webroot
+#  <Directory /vagrant/webroot>
+#    DirectoryIndex index.php index.html
+#    AllowOverride All
+#    Order allow,deny
+#    Allow from all
+#  </Directory>
+#</VirtualHost>
+

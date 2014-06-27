@@ -1,6 +1,9 @@
 class mysql {
-  $mysqlpw = "qwe123"
-
+  $database_pwd = "qwe123"
+  $database = "localdb"
+  $database_user ="localuser"
+  $database_host = "localhost"
+  
   package { "mysql-server":
     ensure => present,
     require => Exec["apt-get update"]
@@ -12,8 +15,14 @@ class mysql {
   }
 
   exec { "set-mysql-password":
-    unless => "mysqladmin -uroot -p$mysqlpw status",
-    command => "mysqladmin -uroot password $mysqlpw",
-    require => Service["mysql"],
+    unless => "mysqladmin -uroot -p$database_pwd status",
+    command => "mysqladmin -uroot password $database_pwd",
+    require => Service["mysql"]
   }
+
+  exec { "set-mysql-db":
+    command => "echo 'create database if not exists $database'|mysql -uroot -p$database_pwd",
+    require => Service["mysql"]
+  }
+
 }
