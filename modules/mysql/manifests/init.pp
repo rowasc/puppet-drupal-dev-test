@@ -26,20 +26,13 @@ class mysql {
   }
 
   exec { "set-mysql-dump-tmp":
-    command => "echo -e \"use localdb; $(cat /vagrant/data/localdb.sql)\" > /vagrant/data/tmp.sql;",
+    command => "echo -e \"use localdb\"; $(cat /vagrant/data/localdb.sql) > /vagrant/data/tmp.sql;" ,
     require => Service["mysql"]
   }
 
-  exec { "use-mysql-dump-tmp-file":
-    command => "mysql -uroot -p$database_pwd < /vagrant/data/tmp.sql;",
-    require => Service["mysql"]
+  exec { "use-mysql-dump-tmp":
+   command => "$(mysql -uroot -pqwe123 < /vagrant/data/tmp.sql)",
+   subscribe => File["/vagrant/data/tmp.sql"]
   }
-
-  exec { "delete-mysql-dump-tmp-file":
-    command => "rm /vagrant/data/tmp.sql;",
-    require => Service["mysql"]
-  }
-
-
 
 }
