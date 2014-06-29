@@ -1,10 +1,6 @@
-# Vagrant/Puppet configuration for LAMP
-Forked from [PerishableDave/puppet-lamp-stack](https://github.com/PerishableDave/puppet-lamp-stack)
-
-
-## Why would I fork this setup? 
-* Mainly because I want to have an easy way to have this setup modified for my needs and easy to access for all my projects. 
- 
+# Vagrant/Puppet + Drupal EXAMPLE configuration for LAMP 
+## Important information
+This repo contains some stuff that is plain wrong. The worst, tough, is that we are including a .sql file  in the repository. This would never be done in a real life scenario, and in the local repo for my team i will be changing this to use a local network dir to get the latest dump for easy setup. I will be adding the generic config later on when I have it, but for now, this serves my purpose well enough. 
 
 ## Prerequisites
 * [Vagrant](http://www.vagrantup.com/)
@@ -38,4 +34,5 @@ You're all set up. The webserver will now be accessible from http://localhost:88
 * curl
 * vim
 * emacs
+
 
