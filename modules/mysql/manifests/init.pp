@@ -26,13 +26,9 @@ class mysql {
   }
 
   exec { "set-mysql-dump-tmp":
-    command => "echo -e \"use localdb\"; $(cat /vagrant/data/localdb.sql) > /vagrant/data/tmp.sql;" ,
+    command => "sh /vagrant/modules/mysql/manifests/init-mysql-db.sh $database root $database_pwd;", 
     require => Service["mysql"]
   }
 
-  exec { "use-mysql-dump-tmp":
-   command => "$(mysql -uroot -pqwe123 < /vagrant/data/tmp.sql)",
-   subscribe => File["/vagrant/data/tmp.sql"]
-  }
 
 }
