@@ -28,6 +28,10 @@ class php::pear {
   exec { "pear channel-discover pear.symfony-project.com; true":
     require => [File["/tmp/pear/temp"], Exec["pear config-set auto_discover 1"]]
   }
+  #add channel drush for drupal
+  #exec {" pear channel-discover pear.drush.org; true":
+  #   require => [File["/tmp/pear/temp"], Exec["pear config-set auto_discover 1"]]
+  #}
 
   exec { "pear channel-discover components.ez.no; true":
     require => [File["/tmp/pear/temp"], Exec["pear config-set auto_discover 1"]]
@@ -42,4 +46,5 @@ class php::pear {
   exec { "pear install -a -f phpunit/PHPUnit":
     require => Exec["pear clear-cache"]
   }
+ 
 }
