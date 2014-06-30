@@ -15,8 +15,10 @@ This repo contains some stuff that is plain wrong. The worst, tough, is that we 
 3. Create directory "webroot" in the root directory of the clone. This will act as your root web folder.
 4. Open up terminal, change directory to the git repo root, and start the vagrant box.
 
-        $ vagrant up
-
+        $ vagrant up 
+        #will throw a warning for [set-mysql-dump-tmp] just ignore it and run point 5 until it's solved (or solve it)
+5. Only Because of a bug in this particular configuration: 
+        $ vagrant provison
 You're all set up. The webserver will now be accessible from http://localhost:8888
 
 ## Package included
