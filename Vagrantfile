@@ -14,4 +14,6 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 80, host: 8888
 
   config.vm.synced_folder "webroot/", "/vagrant/webroot/", :owner => "www-data"
+  #config.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
+
 end
