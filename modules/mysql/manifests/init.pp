@@ -20,11 +20,6 @@ class mysql {
     require => Service["mysql"]
   }
 	
-  exec { "set-mysql-db":
-    command => "echo 'create database if not exists $database'|mysql -uroot -p$database_pwd",
-    require => Service["mysql"]
-  }
-
   exec { "set-mysql-dump-tmp":
     command => "sh /vagrant/modules/mysql/manifests/init-mysql-db.sh $database root $database_pwd;", 
     require => Service["mysql"]
